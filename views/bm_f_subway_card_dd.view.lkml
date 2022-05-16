@@ -157,33 +157,33 @@ view: bm_f_subway_card_dd {
     label: "탑승량_measure"
   }
 
-  # dimension: everything {
-  #   type: number
-  #   sql:
-  #     CASE
-  #       WHEN {% parameter getting %} = 'get_cnt'
-  #         THEN ${TABLE}.get_cnt/{% parameter cut %}
-  #       WHEN {% parameter getting %} = 'get_off_cnt'
-  #         THEN ${TABLE}.get_off_cnt/{% parameter cut %}
-  #     WHEN {% parameter getting %} = 'moving_passenger_cnt'
-  #         THEN ${TABLE}.moving_passenger_cnt/{% parameter cut %}
-  #       WHEN {% parameter getting %} = 'sunsusong_cnt'
-  #         THEN ${TABLE}.sunsusong_cnt/{% parameter cut %}
-  #       ELSE 1
-  #     END;;
-  #   html:
-  #   {% if getting._parameter_value == 'get_cnt' %}
-  #     <font color="lightblue">{{ rendered_value }}</font>
-  #   {% elsif getting._parameter_value == 'get_off_cnt' %}
-  #     <font color="lightgreen">{{ rendered_value }}</font>
-  #   {% elsif getting._parameter_value == 'moving_passenger_cnt' %}
-  #     <font color="darkgreen">{{ rendered_value }}</font>
-  #   {% else getting._parameter_value == 'sunsusong_cnt' %}
-  #     <font color="lightblue">{{ rendered_value }}</font>
-  #   {% endif %};;
-  #   value_format: "0"
-  #   label: "탑승수_dimension"
-  # }
+  dimension: everything {
+    type: number
+    sql:
+      CASE
+        WHEN {% parameter getting %} = 'get_cnt'
+          THEN ${TABLE}.get_cnt/{% parameter cut %}
+        WHEN {% parameter getting %} = 'get_off_cnt'
+          THEN ${TABLE}.get_off_cnt/{% parameter cut %}
+      WHEN {% parameter getting %} = 'moving_passenger_cnt'
+          THEN ${TABLE}.moving_passenger_cnt/{% parameter cut %}
+        WHEN {% parameter getting %} = 'sunsusong_cnt'
+          THEN ${TABLE}.sunsusong_cnt/{% parameter cut %}
+        ELSE 1
+      END;;
+    html:
+    {% if getting._parameter_value == 'get_cnt' %}
+      <font color="darkgreen">{{ rendered_value }}</font>
+    {% elsif getting._parameter_value == 'get_off_cnt' %}
+      <font color="goldenrod">{{ rendered_value }}</font>
+    {% elsif getting._parameter_value == 'moving_passenger_cnt' %}
+       <font color="darkred">{{ rendered_value }}</font>
+    {% else %}
+        <font color="darkgreen">{{ rendered_value }}</font>
+    {% endif %};;
+    value_format: "0"
+    label: "탑승수_dimension"
+  }
 
 
 
