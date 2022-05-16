@@ -130,7 +130,7 @@
     type: field_filter
     default_value: 기준일자
     allow_multiple_values: true
-    required: false
+    required: true
     ui_config:
       type: dropdown_menu
       display: inline
@@ -143,7 +143,7 @@
     type: field_filter
     default_value: 순유동유입비율
     allow_multiple_values: true
-    required: false
+    required: true
     ui_config:
       type: dropdown_menu
       display: inline
@@ -156,7 +156,7 @@
     type: field_filter
     default_value: 2020/05/16
     allow_multiple_values: true
-    required: false
+    required: true
     ui_config:
       type: advanced
       display: popover
@@ -169,7 +169,7 @@
     type: field_filter
     default_value: 2022/05/16
     allow_multiple_values: true
-    required: false
+    required: true
     ui_config:
       type: advanced
       display: popover
