@@ -5,8 +5,10 @@
   description: '테스트 중입니다.'
   refresh: hours
   embed_style:
-    background_color: "lightblue"
+    background_color: "black"
     title_color: "white"
+    tile_background_color: "gray"
+    tile_text_color: "black"
   elements:
   - title: test_demension_measrue
     name: test_demension_measrue
