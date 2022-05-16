@@ -5,7 +5,7 @@
   description: '테스트 중입니다.'
   refresh: hours
   embed_style:
-    background_color: "#ffffff"
+    background_color: "red"
     title_color: "#008000"
   elements:
   - title: test_demension_measrue
