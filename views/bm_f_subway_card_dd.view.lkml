@@ -133,13 +133,13 @@ view: bm_f_subway_card_dd {
     type: sum
     sql:
       CASE
-        WHEN {% parameter getting %} == 'get_cnt'
+        WHEN {% parameter getting %} = 'get_cnt'
           THEN ${TABLE}.get_cnt/{% parameter cut %}
-        WHEN {% parameter getting %} == 'get_off_cnt'
+        WHEN {% parameter getting %} = 'get_off_cnt'
           THEN ${TABLE}.get_off_cnt/{% parameter cut %}
-       WHEN {% parameter getting %} == 'moving_passenger_cnt'
+       WHEN {% parameter getting %} = 'moving_passenger_cnt'
           THEN ${TABLE}.moving_passenger_cnt/{% parameter cut %}
-        WHEN {% parameter getting %} == 'sunsusong_cnt'
+        WHEN {% parameter getting %} = 'sunsusong_cnt'
           THEN ${TABLE}.sunsusong_cnt/{% parameter cut %}
         ELSE 1
       END;;
@@ -161,13 +161,13 @@ view: bm_f_subway_card_dd {
   #   type: number
   #   sql:
   #     CASE
-  #       WHEN {% parameter getting %} == 'get_cnt'
+  #       WHEN {% parameter getting %} = 'get_cnt'
   #         THEN ${TABLE}.get_cnt/{% parameter cut %}
-  #       WHEN {% parameter getting %} == 'get_off_cnt'
+  #       WHEN {% parameter getting %} = 'get_off_cnt'
   #         THEN ${TABLE}.get_off_cnt/{% parameter cut %}
-  #     WHEN {% parameter getting %} == 'moving_passenger_cnt'
+  #     WHEN {% parameter getting %} = 'moving_passenger_cnt'
   #         THEN ${TABLE}.moving_passenger_cnt/{% parameter cut %}
-  #       WHEN {% parameter getting %} == 'sunsusong_cnt'
+  #       WHEN {% parameter getting %} = 'sunsusong_cnt'
   #         THEN ${TABLE}.sunsusong_cnt/{% parameter cut %}
   #       ELSE 1
   #     END;;
