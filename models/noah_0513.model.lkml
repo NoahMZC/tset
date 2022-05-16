@@ -2,7 +2,7 @@ connection: "0513_noah"
 
 # include all the views
 include: "/views/*.view"
-
+include: "/**/*.dashboard"
 datagroup: noah_0513_default_datagroup {
   #sql_trigger: SELECT MAX(id) FROM bm_f_subway_card_dd
   #persist_for: "37min";;

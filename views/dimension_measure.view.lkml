@@ -94,10 +94,13 @@ view: dimension_measure {
 
   parameter: test {
     type: string
-    allowed_value: {label: "기준일자" value: "기준일자" }
+    allowed_value: {label: "기준일자" value: "기준일자"}
+    allowed_value: {label: "주" value: "주"}
+    allowed_value: {label: "기준월" value: "기준월"}
+    allowed_value: {label: "분기" value: "분기"}
     allowed_value: {label: "호선" value: "호선" }
     allowed_value: {label: "역" value: "역" }
-    label: "Dimension 선"
+    label: "Dimension 선택"
   }
 
   dimension: test1 {
@@ -106,6 +109,12 @@ view: dimension_measure {
       CASE
         WHEN {% parameter test %} = '기준일자'
           THEN STRING(${TABLE}.dt)
+         WHEN {% parameter test %} = '주'
+          THEN (FORMAT_DATE('%F', DATE_TRUNC(dimension_measure.dt , WEEK(MONDAY))))
+         WHEN {% parameter test %} = '기준월'
+          THEN (FORMAT_DATE('%Y-%m', dimension_measure.dt ))
+         WHEN {% parameter test %} = '분기'
+          THEN (FORMAT_DATE('%Y-%m', DATE_TRUNC(dimension_measure.dt , QUARTER)))
         WHEN {% parameter test %} = '호선'
           THEN ${TABLE}.subway_line_nm
        WHEN {% parameter test %} = '역'
