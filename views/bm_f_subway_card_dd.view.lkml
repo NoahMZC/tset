@@ -147,7 +147,7 @@ view: bm_f_subway_card_dd {
     {% if getting._parameter_value == 'get_cnt' %}
       <font color="darkgreen">{{ rendered_value }}</font>
     {% elsif getting._parameter_value == 'get_off_cnt' %}
-      <font color="goldenrod">{{ rendered_value }}</font>
+      <font color="darkred">{{ rendered_value }}</font>
     {% elsif getting._parameter_value == 'moving_passenger_cnt' %}
        <font color="darkred">{{ rendered_value }}</font>
     {% else %}
@@ -175,11 +175,11 @@ view: bm_f_subway_card_dd {
     {% if getting._parameter_value == 'get_cnt' %}
       <font color="darkgreen">{{ rendered_value }}</font>
     {% elsif getting._parameter_value == 'get_off_cnt' %}
-      <font color="goldenrod">{{ rendered_value }}</font>
+      <font color="darkgreen">{{ rendered_value }}</font>
     {% elsif getting._parameter_value == 'moving_passenger_cnt' %}
-       <font color="darkred">{{ rendered_value }}</font>
+       <font color="darkgreen">{{ rendered_value }}</font>
     {% else %}
-        <font color="darkgreen">{{ rendered_value }}</font>
+        <font color="darkred">{{ rendered_value }}</font>
     {% endif %};;
     value_format: "0"
     label: "탑승수_dimension"
