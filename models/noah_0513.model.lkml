@@ -24,4 +24,8 @@ explore: bm_f_subway_card_dd {
                   AND ${bm_f_subway_card_dd.dt_date} <=DATE({% parameter bm_f_subway_card_dd.End_date %});;
 }
 
+explore: dimension_measure {
+   sql_always_where: ${dimension_measure.dt_date} >=DATE({% parameter dimension_measure.Start_date %})
+    AND ${dimension_measure.dt_date} <=DATE({% parameter dimension_measure.End_date %});;
+}
 explore: bm_f_subway_passenger_dd {}

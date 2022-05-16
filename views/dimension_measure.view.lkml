@@ -17,19 +17,6 @@ view: dimension_measure {
     sql: ${TABLE}.dt ;;
   }
 
-  dimension: station_nm {
-    type: string
-    sql: ${TABLE}.station_nm ;;
-    label: "역명"
-  }
-
-  dimension: subway_line_nm {
-    type: string
-    sql: ${TABLE}.subway_line_nm ;;
-    label: "호선명"
-  }
-
-
   parameter: cut {
     type: number
     allowed_value: {
@@ -47,19 +34,19 @@ view: dimension_measure {
     type:string
     allowed_value: {
       label: "탑승인원수"
-      value: "get_cnt"
+      value: "탑승인원수"
     }
     allowed_value: {
       label: "하차인원수"
-      value: "get_off_cnt"
+      value: "하차인원수"
     }
     allowed_value: {
       label: "총 운송인원수"
-      value: "moving_passenger_cnt"
+      value: "총 운송인원수"
     }
     allowed_value: {
       label: "순수송인원수"
-      value: "sunsusong_cnt"
+      value: "순수송인원수"
     }
     allowed_value: {
       label: "순승차비율"
@@ -69,7 +56,7 @@ view: dimension_measure {
       label: "순유동유입비율"
       value: "순유동유입비율"
     }
-    label: "탑승 선택"
+    label: "Measure 선택"
   }
 
   parameter: Start_date {
@@ -87,27 +74,66 @@ view: dimension_measure {
     type: sum
     sql:
       CASE
-        WHEN {% parameter getting %} = 'get_cnt'
+        WHEN {% parameter getting %} = '탑승인원수'
           THEN ${TABLE}.get_cnt/{% parameter cut %}
-        WHEN {% parameter getting %} = 'get_off_cnt'
+        WHEN {% parameter getting %} = '하차인원수'
           THEN ${TABLE}.get_off_cnt/{% parameter cut %}
-       WHEN {% parameter getting %} = 'moving_passenger_cnt'
-          THEN ${TABLE}.moving_passenger_cnt/{% parameter cut %}
-        WHEN {% parameter getting %} = 'sunsusong_cnt'
+       WHEN {% parameter getting %} = '총 운송인원수'
+          THEN abs(${TABLE}.moving_passenger_cnt)/{% parameter cut %}
+        WHEN {% parameter getting %} = '순수송인원수'
           THEN ${TABLE}.sunsusong_cnt/{% parameter cut %}
         WHEN {% parameter getting %} = '순승차비율'
           THEN (${TABLE}.sunsusong_cnt/${TABLE}.get_cnt)/{% parameter cut %}
         WHEN {% parameter getting %} = '순유동유입비율'
-          THEN ((${TABLE}.get_off_cnt - ${TABLE}.get_cnt) / ${TABLE}.moving_passenger_cnt))/{% parameter cut %}
+          THEN ((${TABLE}.get_off_cnt - ${TABLE}.get_cnt) / abs(${TABLE}.moving_passenger_cnt))/{% parameter cut %}
         ELSE 1
       END;;
     value_format: "0"
-    label: "탑승량_measure"
+    label: "Measure"
   }
 
+  parameter: test {
+    type: string
+    allowed_value: {label: "기준일자" value: "기준일자" }
+    allowed_value: {label: "호선" value: "호선" }
+    allowed_value: {label: "역" value: "역" }
+    label: "Dimension 선"
+  }
 
-  # measure: count {
-  #   type: count
-  #   drill_fields: []
-  # }
+  dimension: test1 {
+    type: string
+    sql:
+      CASE
+        WHEN {% parameter test %} = '기준일자'
+          THEN STRING(${TABLE}.dt)
+        WHEN {% parameter test %} = '호선'
+          THEN ${TABLE}.subway_line_nm
+       WHEN {% parameter test %} = '역'
+          THEN ${TABLE}.station_nm
+        ELSE "1"
+      END;;
+    label: "Dimension"
+  }
+
+  dimension: st_dt {
+  type: string
+  sql:DATE({% parameter Start_date %}) ;;
+   }
+  dimension: end_dt {
+    type: string
+    sql:DATE({% parameter End_date %}) ;;
+  }
+
+  dimension: check {
+    type: string
+    sql: 1;;
+    html:
+      <p style="color: white; background-color: gray; font-size:100%; text-align:center">
+      {{dimension_measure.st_dt}}부터 {{dimension_measure.end_dt}} 까지.
+      <br>
+      Dimension : {% parameter test %} , Measure : {% parameter getting %}
+      </p>;;
+    label: "check"
+  }
+
 }
