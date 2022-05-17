@@ -5,10 +5,16 @@
   description: '테스트 중입니다.'
   refresh: hours
   embed_style:
+    show_title: true
     background_color: "black"
-    title_color: "white"
+    title_color: "crimson"
+    #color_collection_id : "black"
     tile_background_color: "gray"
-    tile_text_color: "black"
+    #info_button_color : "white"
+    #primary_button_color : "white"
+    tile_text_color: "crimson"
+    show_filters_bar: true
+    #tile_shadow: true
   elements:
   - title: test_demension_measrue
     name: test_demension_measrue
@@ -131,7 +137,7 @@
     title: Dimension 선택
     type: field_filter
     default_value: 기준일자
-    allow_multiple_values: true
+    allow_multiple_values: false
     required: true
     ui_config:
       type: dropdown_menu

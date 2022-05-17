@@ -17,6 +17,18 @@ view: bm_f_subway_passenger_dd {
     sql: ${TABLE}.dt ;;
   }
 
+  dimension: store_location {
+    type: location
+    sql_latitude: 37.541 ;;
+    sql_longitude:126.986 ;;
+  }
+  dimension: store_location2 {
+    type: location
+    sql_latitude: 37.6 ;;
+    sql_longitude:128 ;;
+  }
+
+
   dimension: get_cnt {
     type: number
     sql: ${TABLE}.get_cnt ;;
@@ -46,6 +58,12 @@ view: bm_f_subway_passenger_dd {
     type: string
     sql: ${TABLE}.subway_line_no_cd ;;
   }
+
+  dimension: subway_line_no_name {
+    type: string
+    sql: concat(right(${TABLE}.subway_line_no_cd,1),'호선') ;;
+  }
+
 
   dimension: sunsusong_cnt {
     type: number

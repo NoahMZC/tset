@@ -26,7 +26,6 @@ view: bm_d_transfer_station {
     type: number
     sql: ${TABLE}.transfer_line_cnt ;;
   }
-
   measure: count {
     type: count
     drill_fields: []

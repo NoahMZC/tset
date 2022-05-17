@@ -13,7 +13,14 @@ persist_with: noah_0513_default_datagroup
 
 explore: bm_d_time_range_cd {}
 
-explore: bm_d_transfer_station {}
+explore: bm_d_transfer_station {
+  join: map {
+    from: map
+    type: left_outer
+    sql_on: ${bm_d_transfer_station.station_nm}=${map.Station_name} ;;
+    relationship: one_to_one
+  }
+}
 
 explore: bm_d_calender_dt {}
 
@@ -28,4 +35,20 @@ explore: dimension_measure {
    sql_always_where: ${dimension_measure.dt_date} >=DATE({% parameter dimension_measure.Start_date %})
     AND ${dimension_measure.dt_date} <=DATE({% parameter dimension_measure.End_date %});;
 }
-explore: bm_f_subway_passenger_dd {}
+
+
+explore: bm_f_subway_passenger_dd {
+  join: station_info {
+    from:  bm_d_transfer_station
+    type: left_outer
+    sql_on: ${bm_f_subway_passenger_dd.subway_line_no_cd} = ${station_info.subway_line_no_cd}
+            AND ${bm_f_subway_passenger_dd.station_no_cd} = ${station_info.station_no_cd};;
+            relationship: many_to_one
+  }
+  join: passenger_info {
+    from: bm_d_passenger_type_cd
+    type: left_outer
+    sql_on: ${bm_f_subway_passenger_dd.passenger_type_gb_cd} =${passenger_info.cd} ;;
+    relationship: many_to_one
+  }
+}
