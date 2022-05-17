@@ -17,32 +17,48 @@ view: bm_f_subway_passenger_dd {
     sql: ${TABLE}.dt ;;
   }
 
-  dimension: store_location {
-    type: location
-    sql_latitude: 37.541 ;;
-    sql_longitude:126.986 ;;
-  }
-  dimension: store_location2 {
-    type: location
-    sql_latitude: 37.6 ;;
-    sql_longitude:128 ;;
-  }
-
-
-  dimension: get_cnt {
-    type: number
+  measure: get_cnt {
+    type: sum
     sql: ${TABLE}.get_cnt ;;
+    label: "탑승인원"
   }
 
-  dimension: get_off_cnt {
-    type: number
+  measure: get_off_cnt {
+    type: sum
     sql: ${TABLE}.get_off_cnt ;;
+    label: "하차인원"
   }
 
-  dimension: moving_passenger_cnt {
-    type: number
+  measure: moving_passenger_cnt {
+    type: sum
     sql: ${TABLE}.moving_passenger_cnt ;;
+    label: "유동인원"
   }
+  measure: sunsusong_cnt {
+    type: sum
+    sql: ${TABLE}.sunsusong_cnt ;;
+    label: "순수송인원"
+  }
+
+  dimension: time_gb_cd {
+    type: string
+    sql: ${TABLE}.time_gb_cd ;;
+  }
+
+  # dimension: get_cnt {
+  #   type: number
+  #   sql: ${TABLE}.get_cnt ;;
+  # }
+
+  # dimension: get_off_cnt {
+  #   type: number
+  #   sql: ${TABLE}.get_off_cnt ;;
+  # }
+
+  # dimension: moving_passenger_cnt {
+  #   type: number
+  #   sql: ${TABLE}.moving_passenger_cnt ;;
+  # }
 
   dimension: passenger_type_gb_cd {
     type: string
@@ -65,15 +81,12 @@ view: bm_f_subway_passenger_dd {
   }
 
 
-  dimension: sunsusong_cnt {
-    type: number
-    sql: ${TABLE}.sunsusong_cnt ;;
-  }
+  # dimension: sunsusong_cnt {
+  #   type: number
+  #   sql: ${TABLE}.sunsusong_cnt ;;
+  # }
 
-  dimension: time_gb_cd {
-    type: string
-    sql: ${TABLE}.time_gb_cd ;;
-  }
+
 
   measure: count {
     type: count
