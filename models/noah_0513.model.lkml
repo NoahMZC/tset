@@ -38,11 +38,18 @@ explore: dimension_measure {
 
 
 explore: bm_f_subway_passenger_dd {
-  join: station_info {
-    from:  bm_d_transfer_station
+  join: station_info2 {
+    from:  station_info2
+      # {join: map
+      #     {sql_table_name: `project_b_team.subway_map`
+      #       type: left_outer
+      #       sql_on: ${station_info.station_nm}=${TABLE}.Station_name ;;
+      #       relationship: one_to_one
+      #     }
+      # }
     type: left_outer
-    sql_on: ${bm_f_subway_passenger_dd.subway_line_no_cd} = ${station_info.subway_line_no_cd}
-            AND ${bm_f_subway_passenger_dd.station_no_cd} = ${station_info.station_no_cd};;
+    sql_on: ${bm_f_subway_passenger_dd.subway_line_no_cd} = ${station_info2.bm_d_transfer_station_subway_line_no_cd}
+            AND ${bm_f_subway_passenger_dd.station_no_cd} = ${station_info2.bm_d_transfer_station_station_no_cd};;
             relationship: many_to_one
   }
   join: passenger_info {
