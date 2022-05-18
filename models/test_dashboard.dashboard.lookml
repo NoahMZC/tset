@@ -7,12 +7,12 @@
   embed_style:
     show_title: true
     background_color: "black"
-    title_color: "crimson"
+    title_color: "white"
     #color_collection_id : "black"
     tile_background_color: "gray"
     #info_button_color : "white"
     #primary_button_color : "white"
-    tile_text_color: "crimson"
+    tile_text_color: "white"
     show_filters_bar: true
     #tile_shadow: true
   elements:

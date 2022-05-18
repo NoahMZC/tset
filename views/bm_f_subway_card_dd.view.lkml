@@ -41,6 +41,7 @@ view: bm_f_subway_card_dd {
       value: "1"
     }
     label: "단위 수 선택"
+    default_value: "1"
   }
 
   parameter: getting {
@@ -62,6 +63,7 @@ view: bm_f_subway_card_dd {
       value: "sunsusong_cnt"
     }
     label: "탑승 선택"
+    default_value: "moving_passenger_cnt"
   }
 
   parameter: date {
@@ -83,6 +85,7 @@ view: bm_f_subway_card_dd {
       value: "year"
     }
     label: "년/월/일 선택"
+    default_value: "date"
   }
 
   dimension: date1 {
@@ -96,10 +99,18 @@ view: bm_f_subway_card_dd {
   parameter: Start_date {
     type: date
     description: "Use this field to select a date to filter results by."
+    default_value: "2020-01-01"
+  }
+
+  dimension: Today {
+    type: date
+    sql:now() ;;
+    convert_tz: yes
   }
   parameter: End_date {
     type: date
     description: "Use this field to select a date to filter results by."
+    default_value: "2022-05-18"
   }
 
 

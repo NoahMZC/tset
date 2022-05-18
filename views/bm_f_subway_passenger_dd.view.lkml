@@ -21,23 +21,32 @@ view: bm_f_subway_passenger_dd {
     type: sum
     sql: ${TABLE}.get_cnt ;;
     label: "탑승인원"
+    group_label: "인원수"
+    group_item_label: "탑승수"
   }
 
   measure: get_off_cnt {
     type: sum
     sql: ${TABLE}.get_off_cnt ;;
     label: "하차인원"
+    group_label: "인원수"
+    group_item_label: "하차수"
   }
 
   measure: moving_passenger_cnt {
     type: sum
     sql: ${TABLE}.moving_passenger_cnt ;;
     label: "유동인원"
+    group_label: "인원수"
+    group_item_label: "유동수"
   }
   measure: sunsusong_cnt {
     type: sum
     sql: ${TABLE}.sunsusong_cnt ;;
+    filters: [bm_f_subway_passenger_dd.subway_line_no_cd: "02" ]
     label: "순수송인원"
+    group_label: "인원수"
+    group_item_label: "순수송"
   }
 
   dimension: time_gb_cd {
