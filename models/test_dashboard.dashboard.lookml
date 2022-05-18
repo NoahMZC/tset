@@ -133,6 +133,55 @@
     col: 0
     width: 24
     height: 3
+  - title: New Tile
+    name: New Tile (3)
+    model: noah_0513
+    explore: dimension_measure
+    type: marketplace_viz_calendar_heatmap::calendar_heatmap-marketplace
+    fields: [dimension_measure.sumeverything2, dimension_measure.dt_date]
+    fill_fields: [dimension_measure.dt_date]
+    filters: {}
+    sorts: [dimension_measure.dt_date desc]
+    query_timezone: Asia/Seoul
+    hidden_fields: []
+    hidden_points_if_no: []
+    series_labels: {}
+    show_view_names: false
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    defaults_version: 0
+    series_types: {}
+    listen:
+      Measure 선택: dimension_measure.getting
+      단위 수 선택: dimension_measure.cut
+      Dimension 선택: dimension_measure.test
+      End Date: dimension_measure.End_date
+      Start Date: dimension_measure.Start_date
+    row:
+    col:
+    width:
+    height:
   filters:
   - name: Dimension 선택
     title: Dimension 선택
