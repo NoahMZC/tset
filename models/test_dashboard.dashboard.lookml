@@ -19,6 +19,10 @@
   - title: test_demension_measrue
     name: test_demension_measrue
     model: noah_0513
+    note:
+      text: 'asdf'
+      state: expanded
+      display: above
     explore: dimension_measure
     type: looker_column
     fields: [dimension_measure.sumeverything2, dimension_measure.test1]

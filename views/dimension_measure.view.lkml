@@ -68,7 +68,33 @@ view: dimension_measure {
     description: "Use this field to select a date to filter results by."
   }
 
+  measure: html_test {
+    type: sum
+    sql:  ${TABLE}.get_cnt ;;
+    value_format: "0.00"
+    html:
+    <ul>
+    <font color="darkgreen" size="2em" >
+      <li> value: {{ value }} </li>
+      <li> rendered_value: {{ rendered_value }} </li>
+      <li> model: {{ _model._name }} </li>
+      <li> view: {{ _view._name }} </li>
+      <li> explore: {{ _explore._name }} </li>
+      <li> field: {{ _field._name }} </li>
+      <li> dialect: {{ _dialect._name }} </li>
+      <li> user attribute: {{ _user_attributes['region'] }} </li>
+      <li> query timezone: {{ _query._query_timezone }} </li>
+      <li> filters: {{ _filters['dimension_measure.Start_date'] }} </li>
+       <p><img src="http://findicons.com/files/icons/719/crystal_clear_actions/64/cancel.png" height=20 width=20></p>
+      </font>
+    </ul> ;;
+  }
 
+  dimension: html {
+    type: string
+    sql: 1 ;;
+    html: <img src="https://imgnew.megazone.com/2020/07/MEGAZONECLOUD_NEW_CI_B.png" width="100"> ;;
+  }
 
   measure: sumeverything2 {
     type: sum

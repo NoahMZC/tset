@@ -86,7 +86,8 @@ view: bm_f_subway_passenger_dd {
 
   dimension: subway_line_no_name {
     type: string
-    sql: concat(right(${TABLE}.subway_line_no_cd,1),'호선') ;;
+    sql: concat(right(${TABLE}.subway_line_no_cd,1),'호선');;
+    drill_fields:[station_no_cd]
   }
 
 
@@ -100,5 +101,13 @@ view: bm_f_subway_passenger_dd {
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  measure: count2 {
+    type: count
+    drill_fields: [user_details*]
+  }
+  set: user_details {
+    fields: [station_no_cd, station_no_cd, passenger_type_gb_cd]
   }
 }
