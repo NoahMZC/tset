@@ -21,12 +21,14 @@
     model: noah_0513
     note:
       text: 'asdf'
-      state: expanded
-      display: above
+      state: collapsed
+      display: hover
     explore: dimension_measure
     type: looker_column
     fields: [dimension_measure.sumeverything2, dimension_measure.test1]
     filters: {}
+    hide_legend: false
+    legend_position: right
     sorts: [dimension_measure.test1]
     limit: 500
     query_timezone: Asia/Seoul
@@ -45,6 +47,7 @@
     plot_size_by_field: false
     trellis: ''
     stacking: ''
+    show_dropoff: true
     limit_displayed_rows: false
     legend_position: center
     point_style: none
@@ -57,6 +60,7 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
+    column_spacing_ratio: 0
     series_types: {}
     custom_color_enabled: true
     show_single_value_title: true
