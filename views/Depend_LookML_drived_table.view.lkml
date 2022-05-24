@@ -1,47 +1,21 @@
-view: bigquery_drived_table {
+view: depend_lookml_drived_table {
   derived_table: {
-    explore_source:bm_f_subway_passenger_dd{
-      column: dt_date {
-        field: bm_f_subway_passenger_dd.dt_date
+    explore_source: LookML_drived_table {
+      column: dt {
+        field: LookML_drived_table.dt_date
       }
-      column: get_cnt {
-        field: bm_f_subway_passenger_dd.get_cnt
-      }
-      column: get_out {
-        field:  bm_f_subway_passenger_dd.get_off_cnt
-      }
-      derived_column: sum_getting_getout {
-        sql: get_cnt + get_out ;;
-      }
+      column: sum_getting_getout {}
     }
-    interval_trigger: "30 minute"
   }
-  dimension_group: dt {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.dt_date ;;
-  }
-  dimension: dt_convert {
+  dimension: dt {
     type: date
-    sql: bigquery_drived_table.dt_date ;;
   }
-  measure: get_cnt {
+  measure: sum_getInOut {
     type: sum
-    sql: ${TABLE}.get_cnt ;;
-    label: "탑승인원"
+    sql: sum_getting_getout ;;
   }
-  measure: sum_getting_getout {
-    type: sum
-  }
+
+
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;
   #
@@ -72,7 +46,7 @@ view: bigquery_drived_table {
   # }
 }
 
-# view: drived_table {
+# view: depend_lookml_drived_table {
 #   # Or, you could make this view a derived table, like this:
 #   derived_table: {
 #     sql: SELECT
