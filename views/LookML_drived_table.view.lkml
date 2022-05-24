@@ -1,5 +1,6 @@
 view: LookML_drived_table {
   derived_table: {
+    interval_trigger: "5 minute"
     explore_source:bm_f_subway_passenger_dd{ #소스가 될 테이블을 작성합니다.
       column: date_timestamp {                      #Column명을 작성합니다.
         field: bm_f_subway_passenger_dd.dt_date #가져올 데이터를 적어줍니다.
@@ -11,7 +12,6 @@ view: LookML_drived_table {
       derived_column: sum_getting_getout {
         sql: get_cnt + get_out ;;
       }
-
     }
   }
   dimension_group: dt {
