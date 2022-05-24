@@ -1,7 +1,7 @@
 view: drived_redshift_0304 {
   derived_table: {
-    interval_trigger: "5 minute"
-    distribution_style: "all"
+    #interval_trigger: "5 minute"
+    #distribution_style: "all"
     explore_source: redshifttable_0304 {
       column: dt_date {
         field: redshifttable_0304.dt_date
