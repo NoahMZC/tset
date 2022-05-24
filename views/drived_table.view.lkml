@@ -1,4 +1,47 @@
-view: drived_view {
+view: drived_table {
+  derived_table: {
+    interval_trigger: "5 minutes"
+    explore_source:bm_f_subway_passenger_dd{
+      column: dt_date {
+        field: bm_f_subway_passenger_dd.dt_date
+      }
+      column: get_cnt {
+        field: bm_f_subway_passenger_dd.get_cnt
+      }
+      column: get_out {
+        field:  bm_f_subway_passenger_dd.get_off_cnt
+      }
+      derived_column: sum_getting_getout {
+        sql: get_cnt + get_out ;;
+      }
+    }
+  }
+  dimension_group: dt {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.dt_date ;;
+  }
+  dimension: dt_convert {
+    type: date
+    sql: drived_table.dt_date ;;
+  }
+  measure: get_cnt {
+    type: sum
+    sql: ${TABLE}.get_cnt ;;
+    label: "탑승인원"
+  }
+  measure: sum_getting_getout {
+    type: sum
+  }
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;
   #
@@ -29,14 +72,17 @@ view: drived_view {
   # }
 }
 
-# view: drived_view {
+# view: drived_table {
 #   # Or, you could make this view a derived table, like this:
-  # derived_table: {
-  #   sql: SELECT *
-  #       FROM
-  #           bm_f_subway_passenger_dd
-  #     ;;
-  # }
+#   derived_table: {
+#     sql: SELECT
+#         user_id as user_id
+#         , COUNT(*) as lifetime_orders
+#         , MAX(orders.created_at) as most_recent_purchase_at
+#       FROM orders
+#       GROUP BY user_id
+#       ;;
+#   }
 #
 #   # Define your dimensions and measures here, like this:
 #   dimension: user_id {
