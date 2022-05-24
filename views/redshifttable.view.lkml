@@ -1,5 +1,5 @@
-view: redshifttable {
-  sql_table_name: rs.redshifttable ;;
+view: redshifttable_0304 {
+  sql_table_name: public.redshifttable_0304 ;;
 
   dimension: clean_transported_cnt {
     type: number
