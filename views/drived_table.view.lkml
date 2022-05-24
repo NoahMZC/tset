@@ -16,20 +16,20 @@ view: drived_table {
     }
     interval_trigger: "37 minute"
   }
-  dimension_group: dt {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.dt_date ;;
-  }
+  # dimension_group: dt {
+  #   type: time
+  #   timeframes: [
+  #     raw,
+  #     date,
+  #     week,
+  #     month,
+  #     quarter,
+  #     year
+  #   ]
+  #   convert_tz: no
+  #   datatype: date
+  #   sql: ${TABLE}.dt_date ;;
+  # }
   dimension: dt_convert {
     type: date
     sql: drived_table.dt_date ;;
