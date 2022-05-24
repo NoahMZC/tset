@@ -14,7 +14,7 @@ view: drived_table {
         sql: get_cnt + get_out ;;
       }
     }
-    interval_trigger: "5 minute"
+    interval_trigger: "37 minute"
   }
   dimension_group: dt {
     type: time
