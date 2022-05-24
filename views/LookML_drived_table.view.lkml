@@ -1,6 +1,6 @@
 view: LookML_drived_table {
   derived_table: {
-    interval_trigger: "5 minute"
+    #interval_trigger: "5 minute"
     explore_source:bm_f_subway_passenger_dd{
       column: date_timestamp {
         field: bm_f_subway_passenger_dd.dt_date
