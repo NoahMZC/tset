@@ -1,4 +1,4 @@
-view: drived_table {
+view: bigquery_drived_table {
   derived_table: {
     explore_source:bm_f_subway_passenger_dd{
       column: dt_date {
@@ -14,24 +14,25 @@ view: drived_table {
         sql: get_cnt + get_out ;;
       }
     }
+    interval_trigger: "5 minute"
   }
-  # dimension_group: dt {
-  #   type: time
-  #   timeframes: [
-  #     raw,
-  #     date,
-  #     week,
-  #     month,
-  #     quarter,
-  #     year
-  #   ]
-  #   convert_tz: no
-  #   datatype: date
-  #   sql: ${TABLE}.dt_date ;;
-  # }
+  dimension_group: dt {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.dt_date ;;
+  }
   dimension: dt_convert {
     type: date
-    sql: drived_table.dt_date ;;
+    sql: bigquery_drived_table.dt_date ;;
   }
   measure: get_cnt {
     type: sum

@@ -36,7 +36,7 @@ explore: dimension_measure {
     AND ${dimension_measure.dt_date} <=DATE({% parameter dimension_measure.End_date %});;
 }
 
-explore: drived_table{}
+explore: bigquery_drived_table{}
 explore: bm_f_subway_passenger_dd {
   join: station_info2 {
     from:  station_info2
