@@ -1,6 +1,5 @@
 view: drived_table {
   derived_table: {
-    interval_trigger: "5 minutes"
     explore_source:bm_f_subway_passenger_dd{
       column: dt_date {
         field: bm_f_subway_passenger_dd.dt_date
@@ -15,6 +14,7 @@ view: drived_table {
         sql: get_cnt + get_out ;;
       }
     }
+    interval_trigger: "5 minutes"
   }
   dimension_group: dt {
     type: time
