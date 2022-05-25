@@ -1,5 +1,5 @@
-view: redshifttable_0304 {
-  sql_table_name: public.redshifttable_0304 ;;
+view: redshift_passenger_dataset {
+  sql_table_name: looker_dataset.redshift_passenger_dataset ;;
 
   dimension: clean_transported_cnt {
     type: number
