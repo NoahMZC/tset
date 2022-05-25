@@ -14,4 +14,7 @@ view: create_pdt_bq {
                   group by dt;;
     }
   }
+  dimension: just_for_Create {
+    sql: 1=1 ;;
+  }
 }
