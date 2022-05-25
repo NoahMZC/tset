@@ -1,15 +1,15 @@
 view: combine_view {
 sql_table_name:
-  {% if _model._name == 'noah_0513.model' %}
+  {% if _model._name == 'bigquery_model.model' %}
   `project_b_team.bm_f_subway_passenger_dd`
   {% else %}
-  rs.redshifttable
+  looker_dataset.redshift_passenger_dataset
   {% endif %} ;;
 
   dimension: clean_transported_cnt {
     type: number
     sql:
-      {% if _model._name == 'noah_0513.model' %}
+      {% if _model._name == 'bigquery_model.model' %}
       ${TABLE}.sunsusong_cnt
       {% else %}
       ${TABLE}.clean_transported_cnt
@@ -34,7 +34,7 @@ sql_table_name:
   dimension: foot_traffic_cnt {
     type: number
     sql:
-        {% if _model._name == 'noah_0513.model' %}
+        {% if _model._name == 'bigquery_model.model' %}
         ${TABLE}.moving_passenger_cnt
         {% else %}
         ${TABLE}.foot_traffic_cnt
@@ -44,7 +44,7 @@ sql_table_name:
   dimension: getoff_passenger_cnt {
     type: number
     sql:
-        {% if _model._name == 'noah_0513.model' %}
+        {% if _model._name == 'bigquery_model.model' %}
         ${TABLE}.get_off_cnt
         {% else %}
         ${TABLE}.getoff_passenger_cnt
@@ -54,7 +54,7 @@ sql_table_name:
   dimension: passenger_cnt {
     type: number
     sql:
-        {% if _model._name == 'noah_0513.model' %}
+        {% if _model._name == 'bigquery_model.model' %}
         ${TABLE}.get_cnt
         {% else %}
         ${TABLE}.passenger_cnt
@@ -64,7 +64,7 @@ sql_table_name:
   dimension: passenger_type_cd {
     type: string
     sql:
-        {% if _model._name == 'noah_0513.model' %}
+        {% if _model._name == 'bigquery_model.model' %}
         ${TABLE}.passenger_type_gb_cd
         {% else %}
         ${TABLE}.passenger_type_cd
@@ -74,7 +74,7 @@ sql_table_name:
   dimension: station_cd {
     type: number
     sql:
-        {% if _model._name == 'noah_0513.model' %}
+        {% if _model._name == 'bigquery_model.model' %}
         ${TABLE}.station_no_cd
         {% else %}
         ${TABLE}.station_cd
@@ -84,7 +84,7 @@ sql_table_name:
   dimension: subway_line_cd {
     type: number
     sql:
-        {% if _model._name == 'noah_0513.model' %}
+        {% if _model._name == 'bigquery_model.model' %}
         ${TABLE}.subway_line_no_cd
         {% else %}
         ${TABLE}.subway_line_cd
@@ -94,7 +94,7 @@ sql_table_name:
   dimension: tm_range_cd {
     type: number
     sql:
-        {% if _model._name == 'noah_0513.model' %}
+        {% if _model._name == 'bigquery_model.model' %}
         ${TABLE}.time_gb_cd
         {% else %}
         ${TABLE}.tm_range_cd
