@@ -2,6 +2,7 @@ view: redshift_passenger_dataset_drived_table {
   derived_table: {
     interval_trigger: "5 minute"
     distribution_style: "all"
+    sortkeys: ["dt_date"]
     explore_source: redshift_passenger_dataset {
       column: dt_date {
         field: redshift_passenger_dataset.dt_date
