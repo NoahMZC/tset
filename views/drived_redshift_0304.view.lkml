@@ -9,7 +9,6 @@ view: redshift_passenger_dataset_drived_table {
       column: subway_line_cd {}
       column: clean_transported_cnt {}
       }
-    indexes: ["dt_date", "subway_line_cd"]
     }
 
   dimension: dt_date {
