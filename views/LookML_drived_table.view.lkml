@@ -1,43 +1,41 @@
-view: LookML_drived_table {
-  derived_table: {
-    #interval_trigger: "5 minute"
-    explore_source:bm_f_subway_passenger_dd{
-      column: date_timestamp {
-        field: bm_f_subway_passenger_dd.dt_date
-      }
-      column: get_cnt {}
-      column: get_out {
-        field:  bm_f_subway_passenger_dd.get_off_cnt
-      }
-      derived_column: sum_getting_getout {
-        sql: get_cnt + get_out ;;
-      }
-    }
-  }
-  dimension_group: dt {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.date_timestamp ;;
-  }
-  measure: get_cnt {
-    type: sum
-    sql: get_cnt ;;
-    label: "탑승인원"
-  }
-  measure: sum_getting_getout {
-    type: sum
-    label: "탑승 인원 + 하차 인원"
-  }
-}
+view: LookML_drived_table {}
+#   derived_table: {
+#     interval_trigger: "5 minute"
+
+#     explore_source:bm_f_subway_passenger_dd{
+#       column: date_timestamp {
+#         field: bm_f_subway_passenger_dd.dt_date
+#       }
+#       column: get_cnt {}
+#       column: get_out {
+#         field:  bm_f_subway_passenger_dd.get_off_cnt
+#       }
+#       derived_column: sum_getting_getout {
+#         sql: get_cnt + get_out ;;
+#       }
+#     }
+#   }
+#   dimension: date {
+#     type: date
+#     label: "날짜"
+#     sql: ${TABLE}.calender ;;
+#   }
+#   measure: get_cnt {
+#     type: sum
+#     sql: ${TABLE}.get_cnt ;;
+#     label: "탑승인원"
+#   }
+#   measure: get_out {
+#     type: sum
+#     sql: ${TABLE}.get_out ;;
+#     label: "하차인원"
+#   }
+#   measure: sum_getting_getout {
+#     type: sum
+#     sql: ${TABLE}.sum_getting_getout ;;
+#     label: "탑승 인원 + 하차 인원"
+#   }
+# }
 
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;

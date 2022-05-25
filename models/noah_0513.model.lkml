@@ -13,6 +13,7 @@ persist_with: noah_0513_default_datagroup
 explore: depend_lookml_drived_table {}
 explore: bm_d_time_range_cd {}
 explore: SQL_drived_table {}
+explore: create_pdt_bq {}
 explore: bm_d_transfer_station {
   join: map {
     from: map

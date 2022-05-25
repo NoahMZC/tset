@@ -1,19 +1,19 @@
 view: depend_lookml_drived_table {
-  derived_table: {
-    explore_source: LookML_drived_table {
-      column: dt {
-        field: LookML_drived_table.dt_date
-      }
-      column: sum_getting_getout {}
-    }
-  }
-  dimension: dt {
-    type: date
-  }
-  measure: sum_getInOut {
-    type: sum
-    sql: sum_getting_getout ;;
-  }
+  # derived_table: {
+  #   explore_source: LookML_drived_table {
+  #     column: dt {
+  #       field: LookML_drived_table.dt_date
+  #     }
+  #     column: sum_getting_getout {}
+  #   }
+  # }
+  # dimension: dt {
+  #   type: date
+  # }
+  # measure: sum_getInOut {
+  #   type: sum
+  #   sql: sum_getting_getout ;;
+  # }
 
 
   # # You can specify the table name if it's different from the view name:
