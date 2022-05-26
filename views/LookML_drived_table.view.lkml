@@ -1,6 +1,8 @@
 view: LookML_drived_table {
   derived_table: {
     interval_trigger: "5 minute"
+    partition_keys: [ "date_timestamp" ]
+    cluster_keys: [ "subway_line_no_name", "station_no_cd" ]
     explore_source:bm_f_subway_passenger_dd{
       column: date_timestamp {
         field: bm_f_subway_passenger_dd.dt_date
@@ -15,8 +17,6 @@ view: LookML_drived_table {
         sql: get_cnt + get_out ;;
       }
     }
-    partition_keys: [ "date_timestamp" ]
-    cluster_keys: [ "subway_line_no_name", "station_no_cd" ]
   }
   dimension: date {
     type: date
@@ -29,7 +29,7 @@ view: LookML_drived_table {
   }
   dimension: station_no_cd {
     type: string
-    label: "역 번"
+    label: "역 번호"
   }
   measure: get_cnt {
     type: sum
