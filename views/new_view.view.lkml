@@ -1,53 +1,4 @@
-view: LookML_drived_table {
-  derived_table: {
-    interval_trigger: "5 minute"
-    explore_source:bm_f_subway_passenger_dd{
-      column: date_timestamp {
-        field: bm_f_subway_passenger_dd.dt_date
-      }
-      column: station_no_cd {}
-      column: get_cnt {}
-      column: get_out {
-        field:  bm_f_subway_passenger_dd.get_off_cnt
-      }
-      column: subway_line_no_name {}
-      derived_column: sum_getting_getout {
-        sql: get_cnt + get_out ;;
-      }
-    }
-    partition_keys: [ "date_timestamp" ]
-    cluster_keys: [ "subway_line_no_name", "station_no_cd" ]
-  }
-  dimension: date {
-    type: date
-    label: "날짜"
-    sql: ${TABLE}.calender ;;
-  }
-  dimension: subway_line_no_name {
-    type: string
-    label: "호선"
-  }
-  dimension: station_no_cd {
-    type: string
-    label: "역 번"
-  }
-  measure: get_cnt {
-    type: sum
-    sql: ${TABLE}.get_cnt ;;
-    label: "탑승인원"
-  }
-  measure: get_out {
-    type: sum
-    sql: ${TABLE}.get_out ;;
-    label: "하차인원"
-  }
-  measure: sum_getting_getout {
-    type: sum
-    sql: ${TABLE}.sum_getting_getout ;;
-    label: "탑승 인원 + 하차 인원"
-  }
-}
-
+view: new_view {
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;
   #
@@ -76,8 +27,9 @@ view: LookML_drived_table {
   #   type: sum
   #   sql: ${lifetime_orders} ;;
   # }
+}
 
-# view: drived_table {
+# view: new_view {
 #   # Or, you could make this view a derived table, like this:
 #   derived_table: {
 #     sql: SELECT

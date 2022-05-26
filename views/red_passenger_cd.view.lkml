@@ -1,5 +1,5 @@
 view: red_passenger_cd {
-  sql_table_name: rs.passenger_cd ;;
+  sql_table_name: looker_dataset.redshift_passenger_cd ;;
 
   dimension: name {
     type: string
@@ -8,6 +8,7 @@ view: red_passenger_cd {
 
   dimension: timecode {
     type: number
+    primary_key: yes
     sql: ${TABLE}.timecode ;;
   }
 
