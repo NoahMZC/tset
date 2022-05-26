@@ -21,7 +21,7 @@ view: LookML_drived_table {
   dimension: date {
     type: date
     label: "날짜"
-    sql: ${TABLE}.calender ;;
+    sql: ${TABLE}.date_timestamp ;;
   }
   dimension: subway_line_no_name {
     type: string
