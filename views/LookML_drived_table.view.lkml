@@ -1,8 +1,6 @@
 view: LookML_drived_table {
   derived_table: {
     interval_trigger: "5 minute"
-    partition_keys: [ "date_timestamp" ]
-    cluster_keys: [ "subway_line_no_name", "station_no_cd" ]
     explore_source:bm_f_subway_passenger_dd{
       column: date_timestamp {
         field: bm_f_subway_passenger_dd.dt_date
