@@ -3,13 +3,13 @@ connection: "0513_noah"
 # include all the views
 include: "/views/*.view"
 include: "/**/*.dashboard"
-datagroup: noah_0513_default_datagroup {
-  #sql_trigger: SELECT MAX(id) FROM bm_f_subway_card_dd
-  #persist_for: "37min";;
-  max_cache_age: "1 hour"
+datagroup: dt_datagroup {
+  label: "day_1_datagroup"
+  description: "하루 지날때 마다 초기화."
+  sql_trigger: SELECT MAX(dt) FROM bm_f_subway_card_dd;;
+  max_cache_age: "24 hour"
 }
 
-persist_with: noah_0513_default_datagroup
 explore: depend_lookml_drived_table {}
 explore: bm_d_time_range_cd {}
 explore: SQL_drived_table {}

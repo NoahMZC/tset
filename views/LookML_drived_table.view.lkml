@@ -1,5 +1,6 @@
 view: LookML_drived_table {
   derived_table: {
+    datagroup_trigger: dt_datagroup
     #interval_trigger: "5 minute"
     explore_source:bm_f_subway_passenger_dd{
       column: date_timestamp {
