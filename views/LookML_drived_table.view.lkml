@@ -1,6 +1,6 @@
 view: LookML_drived_table {
   derived_table: {
-    persist_for: "30 seconds"
+    persist_for: "30 second"
     explore_source:bm_f_subway_passenger_dd{
       column: date_timestamp {
         field: bm_f_subway_passenger_dd.dt_date
