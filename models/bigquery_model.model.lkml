@@ -16,6 +16,7 @@ explore: SQL_drived_table {}
 explore: create_pdt_bq {}
 explore: depend_bqpdt {}
 explore: LookML_drived_table {}
+explore: insert_drived_table {}
 explore: bm_d_transfer_station {
   join: map {
     from: map
